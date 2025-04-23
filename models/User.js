@@ -27,7 +27,8 @@ const UserSchema = new mongoose.Schema({
   },
   rooli: {
     type: String,
-    required: true,
+    required: false,
+    default: "user",
     trim: true
   },
 }, {
