@@ -4,12 +4,12 @@ const UserSchema = new mongoose.Schema({
   nimi: {
     type: String,
     required: true,
+    unique: true,
     trim: true
   },
   salasana: {
     type: String,
     required: true,
-    unique: true,
     trim: true,
     lowercase: true
   },
