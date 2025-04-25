@@ -3,10 +3,12 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const userRoutes = require('./routes/users'); // Add this line
+const foodRoutes = require('./routes/foods')
 const app = express();
 
 app.use(express.json());
 app.use('/users', userRoutes);  // Add this line to register routes
+app.use('/foods', foodRoutes);
 
 // Connect to MongoDB with error handling
 mongoose.connect(process.env.MONGO_URI)
