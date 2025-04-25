@@ -16,7 +16,7 @@ router.get('/:id', async (req,res) => {
         const foodId = await foods.find({_id: req.params.id});
         
         // Check if dokument is epmty
-        if (foodId.lenght === 0) {
+        if (foodId.length === 0) {
             return res.status(404).json({message: 'Food not found'})
         }
 
