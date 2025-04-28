@@ -18,7 +18,6 @@ const corsOptions = {
   allowedHeaders: ['Content-Type'],
   preflightContinue: false,
   optionSuccessStatus: 204,
-  credentials: true
 }
 app.use(cors(corsOptions))
 app.use('/users', userRoutes);  // Add this line to register routes
