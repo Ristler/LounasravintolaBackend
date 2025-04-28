@@ -10,11 +10,12 @@ const app = express();
 app.use(express.json());
 
 const corsOptions = {
-  origin: '*',
+  origin: 'http://10.120.33.57',
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type'],
   preflightContinue: false,
-  optionSuccessStatus: 204
+  optionSuccessStatus: 204,
+  credentials: true
 }
 app.use(cors(corsOptions))
 app.use('/users', userRoutes);  // Add this line to register routes
