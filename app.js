@@ -10,7 +10,10 @@ const app = express();
 app.use(express.json());
 
 const corsOptions = {
-  origin: 'http://10.120.33.57',
+  origin: function (origin, callback) {
+    // Allow any origin
+    callback(null, true);
+  },
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type'],
   preflightContinue: false,
