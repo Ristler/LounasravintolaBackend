@@ -12,7 +12,8 @@ app.use('/users', userRoutes);  // Add this line to register routes
 app.use('/foods', foodRoutes);
 
 const corsOptions = {
-  origin: 'http://195.148.98.23:5173',
+  origin: ['http://195.148.98.23:5173', 'http://localhost:5173'],
+  credential: false,
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }
