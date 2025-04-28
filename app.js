@@ -16,7 +16,7 @@ const corsOptions = {
   preflightContinue: false,
   optionSuccessStatus: 204
 }
-app.use(cors(corsOptions))
+app.options('*',cors(corsOptions))
 app.use('/users', userRoutes);  // Add this line to register routes
 app.use('/foods', foodRoutes);
 
