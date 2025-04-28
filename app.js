@@ -1,7 +1,7 @@
 require('dotenv').config();
 
 const express = require('express');
-const cors = require('cors');
+//const cors = require('cors');
 const mongoose = require('mongoose');
 const userRoutes = require('./routes/users'); // Add this line
 const foodRoutes = require('./routes/foods')
@@ -16,7 +16,7 @@ const corsOptions = {
   preflightContinue: false,
   optionSuccessStatus: 204
 }
-app.options('*',cors(corsOptions))
+//app.use(cors(corsOptions))
 app.use('/users', userRoutes);  // Add this line to register routes
 app.use('/foods', foodRoutes);
 
