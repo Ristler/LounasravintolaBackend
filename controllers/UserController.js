@@ -1,4 +1,4 @@
-const {createUser, getAllUsers} = require('../Modules/UserModule');
+const {createUser, getAllUsers} = require('../modules/UserModule');
 const bcrypt = require('bcrypt');
 
 const newUser = async (req, res) => {

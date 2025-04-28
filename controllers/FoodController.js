@@ -1,4 +1,4 @@
-const {createFood, foodById, AllFoods} = require('../Modules/FoodModule');
+const {createFood, foodById, AllFoods} = require('../modules/FoodModule');
 const foods = require("../models/food");
 
 const getFoodById = async (req, res) => {
