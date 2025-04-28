@@ -12,7 +12,7 @@ app.use(express.json());
 const corsOptions = {
   origin: '*',
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  allowedHeaders: ['Content-Type', 'Authorization']
+  allowedHeaders: ['Content-Type']
 }
 app.use(cors(corsOptions))
 app.use('/users', userRoutes);  // Add this line to register routes
