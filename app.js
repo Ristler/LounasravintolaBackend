@@ -10,6 +10,7 @@ const app = express();
 app.use(express.json());
 
 const corsOptions = {
+
     origin: function (origin, callback) {
         // Allow any origin
         callback(null, true);
@@ -18,7 +19,7 @@ const corsOptions = {
     allowedHeaders: ['Content-Type'],
     preflightContinue: false,
     optionSuccessStatus: 204,
-}
+
 app.use(cors(corsOptions))
 app.use('/users', userRoutes);  // Add this line to register routes
 app.use('/foods', foodRoutes);
