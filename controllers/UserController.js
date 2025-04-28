@@ -1,22 +1,30 @@
-const User = require('../models/User');
+const {createUser, getAllUsers} = require('../Modules/UserModule');
+const bcrypt = require('bcrypt');
 
-async function createUser(body) {
-  const { nimi, salasana, email, rooli } = body;
+const newUser = async (req, res) => {
+  try {
+    req.body.salasana = bcrypt.hashSync(req.body.salasana, 10);
 
-  const user = new User({ nimi, salasana, email, rooli });
-  await user.save();
+    const user = await createUser(req.body);
 
-  return user;
-}
+    res.json(user);
+  } catch (error) {
+    res.status(400).json({ message: 'Error creating a new user!', error: error.message });
+  }
+};
 
-async function getAllUsers(res) {
-  const users = await User.find();
+const allUsers = async (req, res) => {
+  try {
+    const users = await getAllUsers();
 
-  return users;
-}
+    res.json(users);
+  } catch (error) {
+    res.status(400).json({ message: 'Error fetching all users!', error: error.message });
+  }
+};
 
 module.exports = {
-  createUser,
-  getAllUsers,
+  newUser,
+  allUsers,
 };
 
