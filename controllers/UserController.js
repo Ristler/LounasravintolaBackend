@@ -4,7 +4,6 @@ const bcrypt = require('bcrypt');
 const newUser = async (req, res) => {
   try {
     req.body.salasana = bcrypt.hashSync(req.body.salasana, 10);
-
     const user = await createUser(req.body);
 
     res.json(user);
