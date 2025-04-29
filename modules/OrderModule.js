@@ -29,10 +29,10 @@ const createOrder = async (body) => {
     return order;
 }
 
-const updateOrderStatus = async (id, ready) => {
+const updateOrderStatus = async (id, status) => {
     const order = await orders.updateOne(
         {_id: id},
-        {$set: { ready } },
+        {$set: { status } },
     );
 
     return order;
