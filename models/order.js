@@ -21,10 +21,10 @@ const orderSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
-    ready: {
-        type: Boolean, 
-        default: false
-        // Order status. If ready, set true
+    status: {
+        type: String, 
+        default: 'Pending'
+        // Order status
     },
 }, {
     timestamps: true
