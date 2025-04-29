@@ -1,6 +1,6 @@
-import jwt from 'jsonwebtoken';
-import 'dotenv/config';
-import {validationResult} from 'express-validator';
+const jwt = require('jsonwebtoken');
+const {validationResult} = require('express-validator');
+require('dotenv/config');
 
 const validationErrors = async (req, res, next) => {
   // validation errors can be retrieved from the request object (added by express-validator middleware)
@@ -55,4 +55,9 @@ const authenticateToken = (req, res, next) => {
   }
 };
 
-export {authenticateToken, errorHandler, notFoundHandler, validationErrors};
+module.exports = {
+  authenticateToken,
+  errorHandler,
+  notFoundHandler,
+  validationErrors
+};
