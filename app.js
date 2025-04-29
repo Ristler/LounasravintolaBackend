@@ -42,8 +42,9 @@ mongoose.connect(process.env.MONGO_URI)
 
         // Start server only after DB connects
         const PORT = process.env.PORT || 3000;
+        const IP = process.env.IP
         app.listen(PORT, () => {
-            console.log(`🚀 Server running at http://localhost:${PORT}`);
+            console.log(`🚀 Server running at http://${IP}${PORT}`);
         });
     })
     .catch((err) => {
