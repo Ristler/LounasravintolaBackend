@@ -1,11 +1,12 @@
 const express = require('express');
 const router = express.Router();
 const {getAllOrders, getOrderById, 
-    getOrderByUser, postOrder} = require('../controllers/OrderController');
+    getOrderByUser, postOrder, patchOrderStatus} = require('../controllers/OrderController');
 
+router.route('/').post(postOrder);
 router.route('/').get(getAllOrders);
-router.route('/byId/:id').get(getOrderById);
-router.route('/byUser/:id').get(getOrderByUser);
-router.route('/order').post(postOrder);
+router.route('/:id').get(getOrderById);
+router.route('/user/:id').get(getOrderByUser);
+router.route('/:id/:status').patch(patchOrderStatus);
 
 module.exports = router;
