@@ -1,10 +1,22 @@
 const express = require('express');
 const router = express.Router();
-const {newUser, allUsers} = require('../controllers/UserController');
+const {body} = require('express-validator');
+const {newUser, allUsers, deleteUser, putUser} = require('../controllers/UserController');
 const {authenticateToken} = require('../middlewares');
 
-router.route('/user').post(newUser)
+router.route('/user').post(
+    body('email').trim().isEmail().escape(),
+    body('nimi').trim().isLength({min: 3, max: 20}).isAlphanumeric().escape(),
+    body('salasana').trim().isLength({min: 8}).escape(),
+    newUser
+)
 router.route('/').get(allUsers)
-router.route('/login').post(authenticateToken)
+router.route('/:id').delete(authenticateToken, deleteUser).put(
+    authenticateToken,
+    body('email').trim().isEmail().escape(),
+    body('nimi').trim().isLength({min: 3, max: 20}).isAlphanumeric().escape(),
+    body('salasana').trim().isLength({min: 8}).escape(),
+    putUser
+)
 
 module.exports = router;

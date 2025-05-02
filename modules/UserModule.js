@@ -19,8 +19,41 @@ const getAllUsers = async () => {
     return users;
 }
 
+const getUserById = async (id) => {
+    const user = await User.findById(id);
+    return user;
+}
+
+const modifyUser = async (body, id, rooli) => {
+    const { nimi, salasana, email } = body;
+
+    let user = await User.findById(id);
+
+    if (user) {
+        user.nimi = nimi;
+        user.salasana = salasana;
+        user.email = email;
+
+        await user.save();
+    }
+
+    return user;
+}
+
+const removeUser = async (id, role) => {
+    let user = await User.findById(id);
+
+    if (user) {
+        //
+    }
+
+    return {message: 'success'};
+};
+
 module.exports = {
     createUser,
     getAllUsers,
     getUserByUsername,
+    modifyUser,
+    removeUser,
 };

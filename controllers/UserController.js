@@ -1,4 +1,4 @@
-const {createUser, getAllUsers} = require('../modules/UserModule');
+const {createUser, getAllUsers, modifyUser, removeUser} = require('../modules/UserModule');
 const bcrypt = require('bcrypt');
 
 const newUser = async (req, res) => {
@@ -22,8 +22,55 @@ const allUsers = async (req, res) => {
   }
 };
 
+const putUser = async (req, res, next) => {
+  try {
+    const {_id, rooli} = res.locals.user;
+
+    // Check if the user is authorized to update
+    if (rooli !== 'admin' && _id !== parseInt(req.params._id)) {
+      return res.status(403).json({message: 'Forbidden'});
+    }
+
+    const result = await modifyUser(req.body, req.params._id, rooli);
+
+    if (result) {
+      res.status(200).json({result});
+    } else {
+      res.status(400).json({message: 'Update failed'});
+    }
+  } catch (error) {
+    console.error('Error updating user:', error);
+    res.status(500).json({message: 'Internal server error'});
+  }
+};
+
+const deleteUser = async (req, res, next) => {
+  try {
+    const {_id, rooli} = res.locals.user;
+
+    // Check if the user is authorized to update
+    if (rooli !== 'admin' && _id !== parseInt(req.params._id)) {
+      return res.status(403).json({message: 'Forbidden'});
+    }
+
+    const result = await deleteUser(req.params._id, rooli);
+
+    if (result) {
+      res.status(200).json({result});
+    } else {
+      res.status(400).json({message: 'Delete failed'});
+    }
+
+  } catch (error) {
+    console.error('Error deleting user:', error);
+    res.status(500).json({message: 'Internal server error'});
+  }
+}
+
 module.exports = {
   newUser,
   allUsers,
+  deleteUser,
+  putUser,
 };
 
