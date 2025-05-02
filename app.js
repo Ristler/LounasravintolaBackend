@@ -16,6 +16,7 @@ const mongoose = require('mongoose');
 const userRoutes = require('./routes/users'); // Add this line
 const foodRoutes = require('./routes/foods');
 const authRoutes = require('./routes/auth');
+const orderRoutes = require('./routes/orders');
 
 const app = express();
 
@@ -37,6 +38,7 @@ app.use(cors(corsOptions));
 app.use('/users', userRoutes);  // Add this line to register routes
 app.use('/foods', foodRoutes);
 app.use('/auth', authRoutes);
+app.use('/orders', orderRoutes);
 
 // Connect to MongoDB with error handling
 mongoose.connect(process.env.MONGO_URI)
