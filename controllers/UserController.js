@@ -48,8 +48,8 @@ const deleteUser = async (req, res, next) => {
   try {
     const {_id, rooli} = res.locals.user;
 
-    // Check if the user is authorized to update
-    if (rooli !== 'admin' && _id !== parseInt(req.params.id)) {
+    // Check if the user is authorized to delete
+    if (rooli !== 'admin' && _id !== req.params.id) {
       return res.status(403).json({message: 'Forbidden'});
     }
 
@@ -67,10 +67,37 @@ const deleteUser = async (req, res, next) => {
   }
 }
 
+const deleteAccount = async (req, res) => {
+  try {
+    const {_id, rooli} = res.locals.user;
+    console.log('_id', _id);
+    console.log('rooli', rooli);
+    console.log('req.params.id', req.params.id);
+
+    // Check if the user is authorized to delete own account
+    if (rooli === 'user' && _id !== req.params.id) {
+      return res.status(403).json({message: 'Forbidden'});
+    }
+
+    const result = await removeUser(req.params.id, rooli);
+    
+    if (result) {
+      res.status(200).json({result});
+    } else {
+      res.status(400).json({message: 'Delete failed'});
+    }
+
+  } catch (error) {
+    console.error('Error deleting user:', error);
+    res.status(500).json({message: 'Internal server error'});
+  }
+}
+
 module.exports = {
   newUser,
   allUsers,
   deleteUser,
+  deleteAccount,
   putUser,
 };
 
