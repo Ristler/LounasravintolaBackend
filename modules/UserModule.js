@@ -44,10 +44,12 @@ const removeUser = async (id, role) => {
     let user = await User.findById(id);
 
     if (user) {
-        //
+        let deleteUser = await User.findByIdAndDelete(id);
+        return deleteUser;
+    } else {
+        return deleteUser;
     }
 
-    return {message: 'success'};
 };
 
 module.exports = {
