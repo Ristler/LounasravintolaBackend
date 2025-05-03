@@ -70,9 +70,6 @@ const deleteUser = async (req, res, next) => {
 const deleteAccount = async (req, res) => {
   try {
     const {_id, rooli} = res.locals.user;
-    console.log('_id', _id);
-    console.log('rooli', rooli);
-    console.log('req.params.id', req.params.id);
 
     // Check if the user is authorized to delete own account
     if (rooli === 'user' && _id !== req.params.id) {
