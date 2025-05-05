@@ -56,3 +56,5 @@ mongoose.connect(process.env.MONGO_URI)
         console.error('❌ Failed to connect to MongoDB:', err.message);
         process.exit(1); // Exit the app if DB fails to connect
     });
+
+module.exports = app;
