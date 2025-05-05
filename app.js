@@ -29,7 +29,7 @@ const corsOptions = {
         callback(null, true);
     },
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    allowedHeaders: ['Content-Type'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
     preflightContinue: false,
     optionSuccessStatus: 204,
 }
