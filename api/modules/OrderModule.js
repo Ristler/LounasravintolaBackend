@@ -1,4 +1,4 @@
-const orders = require("../models/order");
+const orders = require("../../models/order");
 
 const allOrders = async () => {
     const order = await orders.find();

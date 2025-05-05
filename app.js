@@ -13,10 +13,10 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
-const userRoutes = require('./routes/users'); // Add this line
-const foodRoutes = require('./routes/foods');
-const authRoutes = require('./routes/auth');
-const orderRoutes = require('./routes/orders');
+const userRoutes = require('./api/routes/users'); // Add this line
+const foodRoutes = require('./api/routes/foods');
+const authRoutes = require('./api/routes/auth');
+const orderRoutes = require('./api/routes/orders');
 
 const app = express();
 

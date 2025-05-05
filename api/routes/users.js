@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const {body} = require('express-validator');
 const {newUser, allUsers, deleteUser, deleteAccount, putUser} = require('../controllers/UserController');
-const {authenticateToken} = require('../middlewares');
+const {authenticateToken} = require('../../middlewares');
 
 router.route('/user').post(
     body('email').trim().isEmail().escape(),
