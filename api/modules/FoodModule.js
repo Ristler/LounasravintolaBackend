@@ -1,4 +1,4 @@
-const foods = require("../models/food");
+const foods = require("../../models/food");
 
 const foodById = async (id) => {
     const food = foods.find({_id: id});

@@ -13,10 +13,11 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
-const userRoutes = require('./routes/users'); // Add this line
-const foodRoutes = require('./routes/foods');
-const orderRoutes = require('./routes/orders');
-const app = express();
+
+const userRoutes = require('./api/routes/users'); // Add this line
+const foodRoutes = require('./api/routes/foods');
+const authRoutes = require('./api/routes/auth');
+const orderRoutes = require('./api/routes/orders');
 
 app.use(express.json());
 
@@ -27,7 +28,7 @@ const corsOptions = {
         callback(null, true);
     },
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    allowedHeaders: ['Content-Type'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
     preflightContinue: false,
     optionSuccessStatus: 204,
 }
@@ -35,7 +36,9 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use('/users', userRoutes);  // Add this line to register routes
 app.use('/foods', foodRoutes);
+app.use('/auth', authRoutes);
 app.use('/orders', orderRoutes);
+
 
 // Connect to MongoDB with error handling
 mongoose.connect(process.env.MONGO_URI)
@@ -53,3 +56,5 @@ mongoose.connect(process.env.MONGO_URI)
         console.error('❌ Failed to connect to MongoDB:', err.message);
         process.exit(1); // Exit the app if DB fails to connect
     });
+
+module.exports = app;
