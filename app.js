@@ -18,6 +18,7 @@ const userRoutes = require('./api/routes/users'); // Add this line
 const foodRoutes = require('./api/routes/foods');
 const authRoutes = require('./api/routes/auth');
 const orderRoutes = require('./api/routes/orders');
+const app = express();
 
 app.use(express.json());
 
