@@ -13,12 +13,11 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
+
 const userRoutes = require('./api/routes/users'); // Add this line
 const foodRoutes = require('./api/routes/foods');
 const authRoutes = require('./api/routes/auth');
 const orderRoutes = require('./api/routes/orders');
-
-const app = express();
 
 app.use(express.json());
 
@@ -39,6 +38,7 @@ app.use('/users', userRoutes);  // Add this line to register routes
 app.use('/foods', foodRoutes);
 app.use('/auth', authRoutes);
 app.use('/orders', orderRoutes);
+
 
 // Connect to MongoDB with error handling
 mongoose.connect(process.env.MONGO_URI)
