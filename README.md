@@ -17,7 +17,7 @@ Sovelluksen kohderyhmänä on asiakkaat, jotka haluavat tilata kotiruokaa helpos
 ## Toiminnallisuus
 
 Sovellukseksessa asiakas voi tilata lounaita sovelluksen lounaslistalta. Listassa näkyy lounaan hinta ja ostoskorin kautta, lounaan määrää voi nostaa.
-Ostokorista näkyy myös tilauksen yhteis hinta. Asiakas voi tarkistaa ostoskorin sisällön ja poistaa lounaita ostoskorista.
+Ostokorista näkyy myös tilauksen yhteishinta. Asiakas voi tarkistaa ostoskorin sisällön ja poistaa lounaita ostoskorista.
 
 Profiili sivulla asiakas näkee omat tiedot. Tietojen ala-puolella on listattu tilausten kokonais määrä. Oikealla asiakas näkee koko tilaushistorian.
 Tilaushistoriasta asiakas voi tarkastella tilaukseen kuulivia lounaita, painamalla tilausta. Tilauksen kohdalla näkyy myös tilauksen tilanne.
