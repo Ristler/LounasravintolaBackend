@@ -24,6 +24,51 @@ Tilaushistoriasta asiakas voi tarkastella tilaukseen kuulivia lounaita, painamal
 
 Tilauksen pystyy toimittaa vain ainoastaan Admin käyttäjä, joka voi merkitä tilauksen toimitetuksi. Admin käyttäjä voi myös poistaa tilauksia.
 
-## Asennus ja käyttö
+## Asennus ja Suoritus
 
+Sovelluksen voi asentaa ja käyttää paikallisesti seuraavien ohjeiden mukaan:
 
+### Backend ja Frontend Asennus
+
+Asenna backend ja frontend seuraavien repositorioiden avulla:
+ - Backend: [Backend](https://github.com/Ristler/LounasravintolaBackend)
+ - Frontend: [Frontend](https://github.com/Ristler/LounasRavintolaFront)
+
+Katso että sinulla on Node ja olet suorittanut "npm install" komennon molemmissa repositorioissa.
+
+### MongoDB
+
+Rekisteröidy MongoDB [Atlas](https://www.mongodb.com/cloud/atlas/register) palveluun ja luo uusi klusteri tietokantaa varten, jonka sisällä on tietokanta "lounasravintola". 
+
+Backend sisältää kansion "mongoDB" joka sisältää JSON tiedostot listojen luomiseen. 
+
+Tiedostoissa "users" ja "orders" sisältävät vain tyhjät esimerkit, miltä tietokannan pitäisi näyttää.
+
+Voit halutessasi ladata MongoDBCompass, jona kautta voit seurata tietokannan sisältöä ja luoda uusia tietokantoja.
+
+### Env
+
+Backendissä on .env tiedosto, joka sisältää seuraavat muuttujat:
+- MONGO_URI: MongoDB URI, joka löytyy MongoDB Atlasista
+- JWT_SECRET: Salaisuus, jota käytetään esim, salasanan salaamiseen tietokantaan
+- PORT: 3000
+
+Frontendissä on .env tiedosto, joka sisältää seuraavat muuttujat:
+- VITE_FOODS_API=http://localhost:3000/foods
+- VITE_USERS_API=http://localhost:3000/users
+- VITE_AUTH_API=http://localhost:3000/auth
+- VITE_ORDER_API=http://localhost:3000/orders 
+
+## Sovelluksen käynnistys
+
+Suorita "npm run dev" Frontend ja Backend repositorioissa.
+
+### Sovelluksen käyttö
+
+Luo uusi käyttäjä ja kirjaudu sisään. Voit luoda uuden käyttäjän rekisteröitymis sivulla, jonka jälkeen sivu ohjaa sinut kirjautumis sivulle.
+Kirjaudu sisään ja siirry lounaslistalle, josta voit valita lounaita ostoskoriin. Ostoskorista voit tarkistaa ostoskorin sisällön ja poistaa lounaita ostoskorista.
+
+Ostokorista voit pistää tilauksen eteenpäin, ja siirtyä profiili sivulle, josta voit tarkistaa omat tiedot ja tilaushistorian. Voit myös poistaa oman käyttäjän.
+
+Tilauksen voi hyväksyä ainoastaa käyttäjä jolla on "admin" rooli. Admin käyttäjä voi merkitä tilauksie toimitetuiksi.
+Admin käyttäjä pitää luoda manuaalisesti lähettämällä Requesti jossa rooli on "admin" (Tietoturva riski)
