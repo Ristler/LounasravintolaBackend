@@ -12,7 +12,7 @@ ilman sisään kirjautumista, mutta tarvitsee oman tilin viimesitään tilausta 
 Jos asiakkaalla on tili, pääse asiakas katsomaan omaa profiilia, joka listaa käyttäjän tilaushistorian. Tilaushistoriasta asiakas voi katsoa kaikki
 aikaisemmat tilaukset ja niiden tiedot.
 
-Sovelluksen kohderyhmänä on asiakkaat, jotka haluavat tilata kotiruokaa helposti ja nopeasti.
+Sovelluksen kohderyhmänä on asiakkaat, jotka haluavat tilata kotiruokaa helposti ja nopeasti. Työikäiset sekä eläkeläiset.
 
 ## Toiminnallisuus
 
