@@ -30,9 +30,15 @@ const modifyUser = async (body, id, rooli) => {
     let user = await User.findById(id);
 
     if (user) {
-        user.nimi = nimi;
-        user.salasana = salasana;
-        user.email = email;
+        if (nimi !== undefined && nimi !== null) {
+            user.nimi = nimi;
+        }
+        if (salasana !== undefined && salasana !== null) {
+            user.salasana = salasana;
+        }
+        if (email !== undefined && email !== null) {
+            user.email = email;
+        }
 
         await user.save();
     }

@@ -13,9 +13,9 @@ router.route('/user').post(
 router.route('/').get(allUsers)
 router.route('/:id').delete(authenticateToken, deleteUser).put(
     authenticateToken,
-    body('email').trim().isEmail().escape(),
-    body('nimi').trim().isLength({min: 3, max: 20}).isAlphanumeric().escape(),
-    body('salasana').trim().isLength({min: 8}).escape(),
+    body('email').trim().isEmail().escape().optional(),
+    body('nimi').trim().isLength({min: 3, max: 20}).isAlphanumeric().escape().optional(),
+    body('salasana').trim().isLength({min: 8}).escape().optional(),
     putUser
 )
 router.route('/purge/:id').delete(authenticateToken, deleteAccount)

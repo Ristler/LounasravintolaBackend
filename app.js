@@ -28,7 +28,7 @@ const corsOptions = {
         // Allow any origin
         callback(null, true);
     },
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     preflightContinue: false,
     optionSuccessStatus: 204,
