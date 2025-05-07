@@ -38,7 +38,7 @@ describe('Orders API End-to-End Tests', () => {
     it('should create a new order', async () => {
         const newOrder = {
             userId: '68187004da6a51862876493c',
-            items: [{ foodid: '680a158d825b37c212a3fb7a', quantity: 2, price: 10.5 }],
+            items: [{ foodId: '680a158d825b37c212a3fb7a', quantity: 2, price: 10.5 }],
             totalPrice: 21,
             orderScore: 5
         };

@@ -27,7 +27,7 @@ const putUser = async (req, res, next) => {
     const {_id, rooli} = res.locals.user;
 
     // Check if the user is authorized to update
-    if (rooli !== 'admin' && _id !== parseInt(req.params.id)) {
+    if (rooli !== 'admin' && _id !== req.params.id) {
       return res.status(403).json({message: 'Forbidden'});
     }
 
@@ -70,6 +70,7 @@ const deleteUser = async (req, res, next) => {
 const deleteAccount = async (req, res) => {
   try {
     const {_id, rooli} = res.locals.user;
+
 
     // Check if the user is authorized to delete own account
     if (rooli === 'user' && _id !== req.params.id) {
