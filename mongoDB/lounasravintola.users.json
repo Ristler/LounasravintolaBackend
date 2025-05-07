@@ -1,0 +1,17 @@
+[{
+  "_id": {
+    "$oid": ""
+  },
+  "nimi": "",
+  "salasana": "",
+  "email": "test@example.com",
+  "pisteet": 0,
+  "rooli": "user",
+  "createdAt": {
+    "$date": "2025-04-23T07:36:31.234Z"
+  },
+  "updatedAt": {
+    "$date": "2025-04-23T07:36:31.234Z"
+  },
+  "__v": 0
+}]

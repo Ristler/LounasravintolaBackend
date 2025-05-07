@@ -1,0 +1,34 @@
+[{
+  "_id": {
+    "$oid": ""
+  },
+  "userId": {
+    "$oid": ""
+  },
+  "items": [
+    {
+      "foodId": {
+        "$oid": ""
+      },
+      "quantity": 0,
+      "price": 0
+    },
+    {
+      "foodId": {
+        "$oid": ""
+      },
+      "quantity": 0,
+      "price": 0
+    }
+  ],
+  "totalPrice": 0,
+  "orderScore": 0,
+  "status": "delivered",
+  "createdAt": {
+    "$date": "2025-05-07T07:04:41.922Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-07T07:06:17.025Z"
+  },
+  "__v": 0
+}]

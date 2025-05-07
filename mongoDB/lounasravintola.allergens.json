@@ -1,0 +1,78 @@
+[{
+  "_id": {
+    "$oid": "680a1a50825b37c212a3fb86"
+  },
+  "name": "gluteeni"
+},
+{
+  "_id": {
+    "$oid": "680a1a6f825b37c212a3fb87"
+  },
+  "nimi": "maito"
+},
+{
+  "_id": {
+    "$oid": "680a1a7d825b37c212a3fb88"
+  },
+  "nimi": "kananmuna"
+},
+{
+  "_id": {
+    "$oid": "680a1a82825b37c212a3fb89"
+  },
+  "nimi": "kala"
+},
+{
+  "_id": {
+    "$oid": "680a1a8d825b37c212a3fb8a"
+  },
+  "nimi": "soija"
+},
+{
+  "_id": {
+    "$oid": "680a1a93825b37c212a3fb8b"
+  },
+  "nimi": "pähkinät"
+},
+{
+  "_id": {
+    "$oid": "680a1a9d825b37c212a3fb8c"
+  },
+  "nimi": "selleri"
+},
+{
+  "_id": {
+    "$oid": "680a1aa6825b37c212a3fb8d"
+  },
+  "nimi": "sinappi"
+},
+{
+  "_id": {
+    "$oid": "680a1aae825b37c212a3fb8e"
+  },
+  "nimi": "seesami"
+},
+{
+  "_id": {
+    "$oid": "680a1ab5825b37c212a3fb8f"
+  },
+  "nimi": "äyriäiset"
+},
+{
+  "_id": {
+    "$oid": "680a1abd825b37c212a3fb90"
+  },
+  "nimi": "lupiini"
+},
+{
+  "_id": {
+    "$oid": "680a1ac7825b37c212a3fb91"
+  },
+  "nimi": "nilviäiset"
+},
+{
+  "_id": {
+    "$oid": "680a1acf825b37c212a3fb92"
+  },
+  "nimi": "sulfiitit"
+}]

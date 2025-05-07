@@ -1,0 +1,186 @@
+[{
+  "_id": {
+    "$oid": "680a158d825b37c212a3fb7a"
+  },
+  "name": "Lohikeitto",
+  "desc": "Kermainen lohikeitto tillillä ja perunoilla",
+  "price": 10.5,
+  "allergen": [
+    {
+      "$oid": "680a1a6f825b37c212a3fb87"
+    },
+    {
+      "$oid": "680a1a82825b37c212a3fb89"
+    }
+  ],
+  "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEkoB7m1khiY7Wwg1QhjkAdILS_9tvA5fybA&s",
+  "review": 5
+},
+{
+  "_id": {
+    "$oid": "680a175b825b37c212a3fb7c"
+  },
+  "name": "Kasvislasagne",
+  "desc": "Uunissa gratinoitu lasagne kasviskastikkeella ja juustolla",
+  "price": 9.9,
+  "allergen": [
+    {
+      "$oid": "680a1a50825b37c212a3fb86"
+    },
+    {
+      "$oid": "680a1a6f825b37c212a3fb87"
+    }
+  ],
+  "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0Kxvt-3bn9EDNZ8dqUvqnGjTNx1kXPtewQQ&s",
+  "review": 3
+},
+{
+  "_id": {
+    "$oid": "680a17db825b37c212a3fb7e"
+  },
+  "name": "Broilerikiusaus",
+  "desc": "Perinteinen broilerikiusaus perunoista ja kermaisesta kastikkeesta",
+  "price": 10.2,
+  "allergen": [
+    {
+      "$oid": "680a1a6f825b37c212a3fb87"
+    }
+  ],
+  "photo": "https://images.cdn.soppa365.fi/Khcs1OPnrA_7DokI1-Tt4cH5Gjg=/465x465/smart/soppa365.fi/s3fs-public/recipe_main_media/gr_kanahybridi16081.jpg?itok=LSUWe1Ty&timestamp=1551346734",
+  "review": 1
+},
+{
+  "_id": {
+    "$oid": "680a180e825b37c212a3fb7f"
+  },
+  "name": "Falafelit ja hummus",
+  "desc": "Itämainen annos falafelpullia, hummusta ja salaattia",
+  "price": 9.5,
+  "allergen": [
+    {
+      "$oid": "680a1aae825b37c212a3fb8e"
+    }
+  ],
+  "photo": "https://cdn.pixabay.com/photo/2016/09/06/14/24/hummus-1649231_1280.jpg",
+  "review": 3.5
+},
+{
+  "_id": {
+    "$oid": "680a184a825b37c212a3fb80"
+  },
+  "name": "Jauhelihapihvit ja muusi",
+  "desc": "Käsintehdyt pihvit, perunamuusi ja ruskea kastike",
+  "price": 10.9,
+  "allergen": [
+    {
+      "$oid": "680a1a50825b37c212a3fb86"
+    },
+    {
+      "$oid": "680a1a6f825b37c212a3fb87"
+    },
+    {
+      "$oid": "680a1a7d825b37c212a3fb88"
+    }
+  ],
+  "photo": "https://mediaserver-2.vuodatus.net/g/6/62904/1350236831_img-4e62e285ca5a2b39cf06ceab89e0cf71.jpg",
+  "review": 2.5
+},
+{
+  "_id": {
+    "$oid": "680a1870825b37c212a3fb81"
+  },
+  "name": "Tomaattinen linssikeitto",
+  "desc": "Vegaaninen linssikeitto tuoreista tomaateista ja yrteistä",
+  "price": 8.9,
+  "allergen": "",
+  "photo": "https://public.keskofiles.com/f/recipe/KR17_1_tomaatti-lin?w=1440&fit=crop&q=60&auto=format&fm=jpg&ar=16%3A9",
+  "review": 1.5
+},
+{
+  "_id": {
+    "$oid": "680a18ce825b37c212a3fb82"
+  },
+  "name": "Kermainen kana-pasta",
+  "desc": "Pastaa kermaisessa kanakastikkeessa, parmesaania päällä",
+  "price": 10.4,
+  "allergen": [
+    {
+      "$oid": "680a1a50825b37c212a3fb86"
+    },
+    {
+      "$oid": "680a1a6f825b37c212a3fb87"
+    }
+  ],
+  "photo": "https://www.herkkusuut.com/app/uploads/2022/10/stu-moffat-fVHFThDlOc-unsplash-e1667207172595-632x389.jpg",
+  "review": 4.5
+},
+{
+  "_id": {
+    "$oid": "680a190b825b37c212a3fb83"
+  },
+  "name": "Paistetut nuudelit ja tofu",
+  "desc": "Karjalanpaisti",
+  "price": 11.5,
+  "allergen": [
+    {
+      "$oid": "680a1a8d825b37c212a3fb8a"
+    },
+    {
+      "$oid": "680a1a50825b37c212a3fb86"
+    }
+  ],
+  "photo": "https://jalotofu.fi/wp-content/uploads/2022/12/tofu-chow-mein-resepti-1920x1280.jpg.webp",
+  "review": 3
+},
+{
+  "_id": {
+    "$oid": "680a1948825b37c212a3fb84"
+  },
+  "name": "Vihreä curry ja riisi",
+  "desc": "Mausteinen thaimaalainen curry kookosmaidolla ja vihanneksilla",
+  "price": 10.3,
+  "allergen": [
+    ""
+  ],
+  "photo": "https://images.sanoma-sndp.fi/5b53809d1caf4aaead3e24f76b1b555b.jpg/normal/468.jpg",
+  "review": 5
+},
+{
+  "_id": {
+    "$oid": "680a1f4b825b37c212a3fb98"
+  },
+  "name": "Karjalanpaisti",
+  "desc": "Pitkään haudutettua lihaa ja juureksia",
+  "price": 11.5,
+  "allergen": [
+    ""
+  ],
+  "photo": "https://kotiliesi.fi/awpo/img/2009/04/iso_karjalanpaisti.jpg?s=9e7168fc97a4334948343c8db4e710b4&fit=crop",
+  "review": 4
+},
+{
+  "_id": {
+    "$oid": "680f6d2074867dd449757331"
+  },
+  "name": "Rick Astley",
+  "desc": "Never Gonna Give You Up",
+  "price": 99,
+  "allergen": [
+    ""
+  ],
+  "photo": "https://variety.com/wp-content/uploads/2021/07/Rick-Astley-Never-Gonna-Give-You-Up.png?w=1000&h=667&crop=1",
+  "review": 0
+},
+{
+  "_id": {
+    "$oid": "681990c3b00fa78c74523678"
+  },
+  "name": "Testiruoka",
+  "desc": "Testikuvaus",
+  "price": 99,
+  "allergen": [
+    ""
+  ],
+  "photo": "https://www.testhublab.com/wp-content/uploads/2023/09/food-testing.jpg",
+  "__v": 0
+}]
