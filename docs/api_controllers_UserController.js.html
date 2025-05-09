@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: api/controllers/UserController.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: api/controllers/UserController.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * @module Controllers/UserController
+ */
+
+const {createUser, getAllUsers, modifyUser, removeUser} = require('../modules/UserModule');
+const bcrypt = require('bcrypt');
+
+/**
+ * Creates a new user.
+ * @param {Object} req - The request object containing user data in `req.body`.
+ * @param {Object} res - The response object.
+ * @returns {Promise&lt;Object>} - The created user or an error response.
+ */
+const newUser = async (req, res) => {
+  try {
+    req.body.salasana = bcrypt.hashSync(req.body.salasana, 10);
+    const user = await createUser(req.body);
+
+    res.json(user);
+  } catch (error) {
+    res.status(400).json({ message: 'Error creating a new user!', error: error.message });
+  }
+};
+
+/**
+ * Fetches all users.
+ * @param {Object} req - The request object.
+ * @param {Object} res - The response object.
+ * @returns {Promise&lt;Array>} - An array of all users or an error response.
+ */
+const allUsers = async (req, res) => {
+  try {
+    const users = await getAllUsers();
+
+    res.json(users);
+  } catch (error) {
+    res.status(400).json({ message: 'Error fetching all users!', error: error.message });
+  }
+};
+
+/**
+ * Updates a user by ID.
+ * @param {Object} req - The request object containing user data in `req.body` and user ID in `req.params.id`.
+ * @param {Object} res - The response object.
+ * @param {Function} next - The next middleware function.
+ * @returns {Promise&lt;Object>} - The updated user or an error response.
+ */
+const putUser = async (req, res, next) => {
+  try {
+    const {_id, rooli} = res.locals.user;
+
+    if (rooli !== 'admin' &amp;&amp; _id !== req.params.id) {
+      return res.status(403).json({message: 'Forbidden'});
+    }
+
+    const result = await modifyUser(req.body, req.params.id, rooli);
+
+    if (result) {
+      res.status(200).json({result});
+    } else {
+      res.status(400).json({message: 'Update failed'});
+    }
+  } catch (error) {
+    console.error('Error updating user:', error);
+    res.status(500).json({message: 'Internal server error'});
+  }
+};
+
+/**
+ * Deletes a user by ID.
+ * @param {Object} req - The request object containing user ID in `req.params.id`.
+ * @param {Object} res - The response object.
+ * @param {Function} next - The next middleware function.
+ * @returns {Promise&lt;Object>} - A success message or an error response.
+ */
+const deleteUser = async (req, res, next) => {
+  try {
+    const {_id, rooli} = res.locals.user;
+
+    if (rooli !== 'admin' &amp;&amp; _id !== req.params.id) {
+      return res.status(403).json({message: 'Forbidden'});
+    }
+
+    const result = await removeUser(req.params.id, rooli);
+
+    if (result) {
+      res.status(200).json({result});
+    } else {
+      res.status(400).json({message: 'Delete failed'});
+    }
+  } catch (error) {
+    console.error('Error deleting user:', error);
+    res.status(500).json({message: 'Internal server error'});
+  }
+};
+
+/**
+ * Deletes the currently authenticated user's account.
+ * @param {Object} req - The request object containing user ID in `req.params.id`.
+ * @param {Object} res - The response object.
+ * @returns {Promise&lt;Object>} - A success message or an error response.
+ */
+const deleteAccount = async (req, res) => {
+  try {
+    const {_id, rooli} = res.locals.user;
+
+    if (rooli === 'user' &amp;&amp; _id !== req.params.id) {
+      return res.status(403).json({message: 'Forbidden'});
+    }
+
+    const result = await removeUser(req.params.id, rooli);
+
+    if (result) {
+      res.status(200).json({result});
+    } else {
+      res.status(400).json({message: 'Delete failed'});
+    }
+  } catch (error) {
+    console.error('Error deleting user:', error);
+    res.status(500).json({message: 'Internal server error'});
+  }
+};
+
+/**
+ * @type {{newUser: ((function(*, *): Promise&lt;void>)|*), allUsers: ((function(*, *): Promise&lt;void>)|*), putUser: ((function(*, *, *): Promise&lt;void>)|*), deleteUser: ((function(*, *, *): Promise&lt;void>)|*), deleteAccount: ((function(*, *): Promise&lt;void>)|*)}}
+ */
+module.exports = {
+  newUser,
+  allUsers,
+  deleteUser,
+  deleteAccount,
+  putUser,
+};</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-Controllers_AuthController.html">Controllers/AuthController</a></li><li><a href="module-Controllers_FoodController.html">Controllers/FoodController</a></li><li><a href="module-Controllers_OrderController.html">Controllers/OrderController</a></li><li><a href="module-Controllers_UserController.html">Controllers/UserController</a></li><li><a href="module-Middlewares.html">Middlewares</a></li><li><a href="module-Models_Food.html">Models/Food</a></li><li><a href="module-Models_Order.html">Models/Order</a></li><li><a href="module-Models_User.html">Models/User</a></li><li><a href="module-Modules_FoodModule.html">Modules/FoodModule</a></li><li><a href="module-Modules_OrderModule.html">Modules/OrderModule</a></li><li><a href="module-Modules_UserModule.html">Modules/UserModule</a></li><li><a href="module-Routes_Auth.html">Routes/Auth</a></li><li><a href="module-Routes_Foods.html">Routes/Foods</a></li><li><a href="module-Routes_Orders.html">Routes/Orders</a></li><li><a href="module-Routes_Users.html">Routes/Users</a></li></ul><h3>Global</h3><ul><li><a href="global.html#corsOptions">corsOptions</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Fri May 09 2025 22:38:58 GMT+0300 (Eastern European Summer Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

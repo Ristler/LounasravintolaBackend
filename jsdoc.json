@@ -1,0 +1,12 @@
+{
+  "source": {
+    "include": ["api/controllers", "api/modules", "models"],
+    "includePattern": ".+\\.js(doc|x)?$",
+    "excludePattern": "(^|\\/|\\\\)node_modules"
+  },
+  "opts": {
+    "destination": "./docs",
+    "recurse": true,
+    "template": "node_modules/jsdoc/templates/default"
+  }
+}

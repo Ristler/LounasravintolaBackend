@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: api/routes/users.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: api/routes/users.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * @module Routes/Users
+ * @description Routes for user-related operations.
+ */
+
+const express = require('express');
+const router = express.Router();
+const { body } = require('express-validator');
+const { newUser, allUsers, deleteUser, deleteAccount, putUser } = require('../controllers/UserController');
+const { authenticateToken } = require('../../middlewares');
+
+/**
+ * POST /user
+ * @summary Creates a new user.
+ * @param {Object} req - The request object containing user data in `req.body`.
+ * @param {Object} res - The response object containing the created user or an error message.
+ * @validation email - Must be a valid email.
+ * @validation nimi - Must be alphanumeric and between 3-20 characters.
+ * @validation salasana - Must be at least 8 characters long.
+ */
+router.route('/user').post(
+    body('email').trim().isEmail().escape(),
+    body('nimi').trim().isLength({ min: 3, max: 20 }).isAlphanumeric().escape(),
+    body('salasana').trim().isLength({ min: 8 }).escape(),
+    newUser
+);
+
+/**
+ * GET /
+ * @summary Fetches all users.
+ * @param {Object} req - The request object.
+ * @param {Object} res - The response object containing an array of all users or an error message.
+ */
+router.route('/').get(allUsers);
+
+/**
+ * DELETE /:id
+ * @summary Deletes a user by their ID.
+ * @param {Object} req - The request object containing the user ID in `req.params.id`.
+ * @param {Object} res - The response object containing the deleted user or an error message.
+ * @middleware authenticateToken - Ensures the user is authenticated.
+ */
+router.route('/:id').delete(authenticateToken, deleteUser);
+
+/**
+ * PUT /:id
+ * @summary Updates a user by their ID.
+ * @param {Object} req - The request object containing the user ID in `req.params.id` and updated data in `req.body`.
+ * @param {Object} res - The response object containing the updated user or an error message.
+ * @middleware authenticateToken - Ensures the user is authenticated.
+ * @validation email - Must be a valid email (optional).
+ * @validation nimi - Must be alphanumeric and between 3-20 characters (optional).
+ * @validation salasana - Must be at least 8 characters long (optional).
+ */
+router.route('/:id').put(
+    authenticateToken,
+    body('email').trim().isEmail().escape().optional(),
+    body('nimi').trim().isLength({ min: 3, max: 20 }).isAlphanumeric().escape().optional(),
+    body('salasana').trim().isLength({ min: 8 }).escape().optional(),
+    putUser
+);
+
+/**
+ * DELETE /purge/:id
+ * @summary Permanently deletes a user account by their ID.
+ * @param {Object} req - The request object containing the user ID in `req.params.id`.
+ * @param {Object} res - The response object containing the result of the deletion or an error message.
+ * @middleware authenticateToken - Ensures the user is authenticated.
+ */
+router.route('/purge/:id').delete(authenticateToken, deleteAccount);
+
+module.exports = router;</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-Controllers_AuthController.html">Controllers/AuthController</a></li><li><a href="module-Controllers_FoodController.html">Controllers/FoodController</a></li><li><a href="module-Controllers_OrderController.html">Controllers/OrderController</a></li><li><a href="module-Controllers_UserController.html">Controllers/UserController</a></li><li><a href="module-Middlewares.html">Middlewares</a></li><li><a href="module-Models_Food.html">Models/Food</a></li><li><a href="module-Models_Order.html">Models/Order</a></li><li><a href="module-Models_User.html">Models/User</a></li><li><a href="module-Modules_FoodModule.html">Modules/FoodModule</a></li><li><a href="module-Modules_OrderModule.html">Modules/OrderModule</a></li><li><a href="module-Modules_UserModule.html">Modules/UserModule</a></li><li><a href="module-Routes_Auth.html">Routes/Auth</a></li><li><a href="module-Routes_Foods.html">Routes/Foods</a></li><li><a href="module-Routes_Orders.html">Routes/Orders</a></li><li><a href="module-Routes_Users.html">Routes/Users</a></li></ul><h3>Global</h3><ul><li><a href="global.html#corsOptions">corsOptions</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Fri May 09 2025 22:38:58 GMT+0300 (Eastern European Summer Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

@@ -1,16 +1,26 @@
+/**
+ * @module Middlewares
+ * @description Custom middleware functions for validation, error handling, and authentication.
+ */
+
 const jwt = require('jsonwebtoken');
-const {validationResult} = require('express-validator');
+const { validationResult } = require('express-validator');
 require('dotenv/config');
 
+/**
+ * Middleware to handle validation errors from `express-validator`.
+ * @function validationErrors
+ * @param {Object} req - Express request object.
+ * @param {Object} res - Express response object.
+ * @param {Function} next - Express next middleware function.
+ */
 const validationErrors = async (req, res, next) => {
-  // validation errors can be retrieved from the request object (added by express-validator middleware)
   const errors = validationResult(req);
-  // check if any validation errors
   if (!errors.isEmpty()) {
     const messages = errors
-      .array()
-      .map((error) => `${error.path}: ${error.msg}`)
-      .join(', ');
+        .array()
+        .map((error) => `${error.path}: ${error.msg}`)
+        .join(', ');
     const error = new Error(messages);
     error.status = 400;
     next(error);
@@ -19,24 +29,44 @@ const validationErrors = async (req, res, next) => {
   next();
 };
 
+/**
+ * Middleware to handle 404 Not Found errors.
+ * @function notFoundHandler
+ * @param {Object} req - Express request object.
+ * @param {Object} res - Express response object.
+ * @param {Function} next - Express next middleware function.
+ */
 const notFoundHandler = (req, res, next) => {
   const error = new Error(`Not Found - ${req.originalUrl}`);
   error.status = 404;
-  next(error); // forward error to error handler
+  next(error);
 };
+
 /**
- * Custom default middleware for handling errors
+ * Middleware to handle errors globally.
+ * @function errorHandler
+ * @param {Object} err - Error object.
+ * @param {Object} req - Express request object.
+ * @param {Object} res - Express response object.
+ * @param {Function} next - Express next middleware function.
  */
 const errorHandler = (err, req, res, next) => {
-  res.status(err.status || 500); // default is 500 if err.status is not defined
+  res.status(err.status || 500);
   res.json({
     error: {
       message: err.message,
-      status: err.status || 500
-    }
+      status: err.status || 500,
+    },
   });
 };
 
+/**
+ * Middleware to authenticate JWT tokens.
+ * @function authenticateToken
+ * @param {Object} req - Express request object.
+ * @param {Object} res - Express response object.
+ * @param {Function} next - Express next middleware function.
+ */
 const authenticateToken = (req, res, next) => {
   console.log('authenticateToken', req.headers);
   const authHeader = req.headers['authorization'];
@@ -51,7 +81,7 @@ const authenticateToken = (req, res, next) => {
     next();
   } catch (err) {
     console.error('Error with verifying authentication token:', err);
-    res.status(403).send({message: 'invalid token'});
+    res.status(403).send({ message: 'invalid token' });
   }
 };
 
@@ -59,5 +89,5 @@ module.exports = {
   authenticateToken,
   errorHandler,
   notFoundHandler,
-  validationErrors
+  validationErrors,
 };

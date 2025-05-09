@@ -3,6 +3,16 @@ const bcrypt = require('bcrypt');
 const {getUserByUsername} = require('../modules/UserModule');
 require('dotenv/config');
 
+/**
+ * @module Controllers/AuthController
+ */
+
+/**
+ * Logs out the currently authenticated user.
+ * @param {Object} req - The request object.
+ * @param {Object} res - The response object.
+ * @returns {Promise<Object>} - A success message or an error response.
+ */
 const logout = async (req, res) => {
     try {
         if (!res.locals.user) {
@@ -20,8 +30,14 @@ const logout = async (req, res) => {
         console.error('Error during logout:', error);
         res.status(500).json({ message: 'Internal server error' });
     }
-}
+};
 
+/**
+ * Authenticates a user and generates a JWT token.
+ * @param {Object} req - The request object containing user credentials.
+ * @param {Object} res - The response object.
+ * @returns {Promise<void>} - Sends the authenticated user and token or an error response.
+ */
 const postLogin = async (req, res) => {
     console.log('postLogin', req.body);
 
@@ -55,6 +71,12 @@ const postLogin = async (req, res) => {
     res.json({user: userWithNoPassword, token});
 };
 
+/**
+ * Retrieves the currently authenticated user's information.
+ * @param {Object} req - The request object.
+ * @param {Object} res - The response object.
+ * @returns {Promise<void>} - Sends the user information or an error response.
+ */
 const getMe = async (req, res) => {
     console.log('getMe', res.locals.user);
 
@@ -65,6 +87,9 @@ const getMe = async (req, res) => {
     }
 };
 
+/**
+ * @type {{postLogin: ((function(*, *): Promise<void>)|*), getMe: ((function(*, *): Promise<void>)|*), logout: ((function(*, *): Promise<*>)|*)}}
+ */
 module.exports = {
     postLogin,
     getMe,
