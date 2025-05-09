@@ -1,3 +1,7 @@
+## Dokumentaation
+
+Voit löytää dokumentaation tästä [index.html](docs/index.html).
+
 # Ohjeistus Lounasravintola Projektiin
 
 Tiedosto sisältää ohjeistuksen lounasravintola projektin sisällöstä. Tiedostossa on esitelty projektin idea,
